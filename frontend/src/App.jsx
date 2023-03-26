@@ -9,22 +9,25 @@ import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Layout from "./components/layout/Base";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/registration/" element={<Registration />} />
-      <Route path="/login/" element={<Login />} />
-      <Route
-        path="/profile/"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/registration/" element={<Registration />} />
+        <Route path="/login/" element={<Login />} />
+        <Route
+          path="/profile/"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Layout>
   );
 }
 
