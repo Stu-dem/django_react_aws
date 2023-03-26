@@ -8,22 +8,22 @@ import ProtectedRoute from "./routes/ProtectedRoutes";
 import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/registration/" element={<Registration />} />
+      <Route path="/login/" element={<Login />} />
       <Route
-        path="/"
+        path="/profile/"
         element={
           <ProtectedRoute>
-            <Home />
+            <Profile />
           </ProtectedRoute>
         }
       />
-      <Route path="/registration/" element={<Registration />} />
-      <Route path="/login/" element={<Login />} />
     </Routes>
   );
 }
