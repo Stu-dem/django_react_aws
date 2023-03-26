@@ -6,6 +6,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import ProtectedRoute from "./routes/ProtectedRoutes";
 import Home from "./pages/Home";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,7 +22,8 @@ function App() {
           </ProtectedRoute>
         }
       />
-      <Route path="/login/" element={<div>Login</div>} />
+      <Route path="/registration/" element={<Registration />} />
+      <Route path="/login/" element={<Login />} />
     </Routes>
   );
 }
