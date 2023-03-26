@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import useUserActions from "../../../hooks/user-actions";
 
 function RegistrationForm() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
+  const userActions = useUserActions();
 
   const formik = useFormik({
     initialValues: {
@@ -13,25 +15,12 @@ function RegistrationForm() {
       password: "",
     },
     onSubmit: (data) => {
-      axios
-        .post("http://localhost:8000/api/auth/login/", data)
-        .then((res) => {
-          localStorage.setItem(
-            "auth",
-            JSON.stringify({
-              access: res.data.access,
-              refresh: res.data.refresh,
-              user: res.data.user,
-            })
-          );
-          navigate("/");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.message) {
-            setError(err.request.response);
-          }
-        });
+      userActions.login(data).catch((err) => {
+        console.log(err);
+        if (err.message) {
+          setError(err.message);
+        }
+      });
     },
   });
 
@@ -57,7 +46,7 @@ function RegistrationForm() {
       />
 
       <button type="submit" className="btn btn-primary w-full">
-        Create Account
+        Login
       </button>
       <p>{error}</p>
     </form>
