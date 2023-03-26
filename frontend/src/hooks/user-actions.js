@@ -33,17 +33,30 @@ export default function useUserActions() {
 
 export function getUser() {
   const auth = JSON.parse(localStorage.getItem("auth"));
-  return auth.user;
+
+  let user = null;
+  if (auth !== null) {
+    user = auth.user !== null ? auth.user : null;
+  }
+  return user;
 }
 
 export function getAccessToken() {
   const auth = JSON.parse(localStorage.getItem("auth"));
-  return auth.access;
+  let access = null;
+  if (auth !== null) {
+    access = auth.access !== null ? auth.access : null;
+  }
+  return access;
 }
 
 export function getRefreshToken() {
   const auth = JSON.parse(localStorage.getItem("auth"));
-  return auth.refresh;
+  let refresh = null;
+  if (auth !== null) {
+    refresh = auth.refresh !== null ? auth.refresh : null;
+  }
+  return refresh;
 }
 
 export function setUserData(res) {
