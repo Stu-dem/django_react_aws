@@ -18,5 +18,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
-          whoami
-          ls -al
+          ./django_react_aws/docker-ec2-deploy.sh
