@@ -2,3 +2,6 @@ __pycache__
 .venv
 env
 .env
+
+docker-ec2-deploy.sh
+./docker-ec2-deploy.sh
