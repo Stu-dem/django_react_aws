@@ -14,6 +14,7 @@ class userViewSet(viewsets.ModelViewSet):
         if self.request.user.is_superuser:
             return User.objects.all()
         return User.objects.exclude(is_superuser=True)
+    pass
 
     def get_object(self):
         obj = User.objects.get_objects_by_public_id(self.kwargs['pk'])
