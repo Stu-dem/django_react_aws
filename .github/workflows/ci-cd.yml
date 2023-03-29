@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-test:
+  n ame: Run build tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -15,10 +16,6 @@ jobs:
         echo "${{ secrets.TEST_SECRETS }}" >> .env
     - name: List all files
       run: |
-        ls -al
-    - name: Access files
-      run: |
-        cd ./django_react_aws
         ls -al
   deploy:
     name: Deploying on EC2 via SSH
@@ -34,4 +31,5 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
-          ./django_react_aws/docker-ec2-deploy.sh
+          ls -al
+          ./docker-ec2-deploy.sh
