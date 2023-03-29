@@ -19,3 +19,4 @@ class userViewSet(viewsets.ModelViewSet):
         obj = User.objects.get_objects_by_public_id(self.kwargs['pk'])
         self.check_object_permissions(self.request, obj)
         return obj
+    pass
