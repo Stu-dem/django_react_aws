@@ -2,7 +2,7 @@
 
 TARGET='master'
 
-cd ~/api || exit
+#!cd ~/api || exit
 
 ACTION_COLOR='\033[1;90m'
 NO_COLOR='\033[0m'
