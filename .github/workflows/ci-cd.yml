@@ -33,4 +33,6 @@ jobs:
         script: |
           ls -al
           cd django_react_aws
+          ls -al
+          ./docker-ec2-deploy.sh
 
