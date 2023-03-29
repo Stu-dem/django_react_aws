@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function useUserActions() {
   const navigate = useNavigate();
-  const baseURL = "http://localhost:8000/api";
+  const baseURL = import.meta.env.REACT_APP_API_URL;
 
   function login(data) {
     return axios.post(`${baseURL}/auth/login/`, data).then((res) => {
