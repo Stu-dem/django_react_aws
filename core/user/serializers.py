@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     )
     created = serializers.DateTimeField(read_only=True)
     updated = serializers.DateTimeField(read_only=True)
+    # this is a comment
 
     class Meta:
         model = User
