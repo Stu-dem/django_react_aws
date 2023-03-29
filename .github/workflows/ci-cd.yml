@@ -32,4 +32,5 @@ jobs:
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
           ls -al
-          ./docker-ec2-deploy.sh
+          cd django_react_aws
+
