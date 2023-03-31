@@ -1,12 +1,12 @@
 name: Build and deploy frontend
 env: 
-  S3_BUCKET_NAME: "YOUR BUCKET NAME FROM Step 2"
+  AWS_STORAGE_BUCKET_NAME: "django-react-frontend"
   S3_STATICFILES_NAME: "static"
   AWS_REGION_NAME: "us-east-2"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     
 jobs:
   copy-django-static:
@@ -26,7 +26,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Copying file to S3
-        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.EB_S3_BUCKET_NAME }}/
+        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.AWS_STORAGE_BUCKET_NAME }}/
 
       - name: Print nice message on success finish
         run: echo "CI part finished successfuly"
