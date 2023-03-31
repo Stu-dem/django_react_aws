@@ -28,7 +28,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Copying file to S3
-        run: aws s3 cp ./${{ env.DEPLOY_STATICFILES_NAME }}/ s3://${{ secrets.AWS_STORAGE_BUCKET_NAME }}
+        run: aws s3 cp ./${{ env.DEPLOY_STATICFILES_NAME }}/ s3://${{ secrets.AWS_STORAGE_BUCKET_NAME }} --recursive
 
       - name: Print nice message on success finish
         run: echo "CI part finished successfuly"
