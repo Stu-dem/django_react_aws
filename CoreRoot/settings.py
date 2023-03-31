@@ -156,22 +156,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-USE_S3 = True
+USE_S3 = True if os.getenv('USE_S3') == "True" else False
 
 if USE_S3:
     # aws settings
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_STORAGE_BUCKET_NAME = "django-react-backend-static"
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # s3 static settings
     AWS_LOCATION = 'core_staticfiles'
-    STATIC_URL = f'http://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    STATICFILES_STORAGE = 'CoreRoot.storage_backends.StaticStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_STORAGE_BUCKET_NAME = "django-react-backend-static"
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_CUSTOM_DOMAIN = '%s.us-east-2.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 else:
     STATIC_URL = '/core_staticfiles/'
