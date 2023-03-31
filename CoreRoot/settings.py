@@ -164,13 +164,12 @@ if USE_S3:
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = "django-react-backend-static"
     AWS_DEFAULT_ACL = 'public-read'
-    AWS_S3_CLOUDFRONT_CUSTOM_DOMAIN = os.getenv(
-        'AWS_S3_CLOUDFRONT_CUSTOM_DOMAIN')
+    AWS_S3_CUSTOM_DOMAIN = os.getenv('AWS_S3_CLOUDFRONT_CUSTOM_DOMAIN')
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # s3 static settings
     AWS_LOCATION = 'core_staticfiles'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = f'https://{AWS_S3_CLOUDFRONT_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 else:
     STATIC_URL = '/core_staticfiles/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'core_staticfiles')
