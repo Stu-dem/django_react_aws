@@ -170,6 +170,9 @@ if USE_S3:
     AWS_LOCATION = 'core_staticfiles'
     STATIC_URL = f'http://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
     STATICFILES_STORAGE = 'CoreRoot.storage_backends.StaticStorage'
+    AWS_STORAGE_BUCKET_NAME = "django-react-backend-static"
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 else:
     STATIC_URL = '/core_staticfiles/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'core_staticfiles')
