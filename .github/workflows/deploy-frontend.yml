@@ -1,8 +1,8 @@
 name: Build and deploy frontend
 env: 
   AWS_STORAGE_BUCKET_NAME: "django-react-frontend"
-  S3_STATICFILES_NAME: "static"
   AWS_REGION_NAME: "us-east-2"
+  DEPLOY_STATICFILES_NAME: "core_staticfiles"
 
 on:
   push:
@@ -27,13 +27,13 @@ jobs:
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Copying file to S3
-        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.AWS_STORAGE_BUCKET_NAME }}/
+        run: aws s3 cp ${{ env.DEPLOY_STATICFILES_NAME }} s3://${{ env.AWS_STORAGE_BUCKET_NAME }}/
 
       - name: Print nice message on success finish
         run: echo "CI part finished successfuly"
     
-  build-test-deploy:
-    name: Tests
+  build-deploy:
+    name: Build and deploy frontend to S3
     runs-on: ubuntu-latest
     defaults: 
       run:
@@ -45,13 +45,10 @@ jobs:
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
 
       - name: Installing dependencies
-        run: yarn install
-
-      - name: Running tests
-        run: yarn test
+        run: npm run install
 
       - name: Building project
-        run: yarn build
+        run: npm run build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
