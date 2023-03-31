@@ -45,9 +45,6 @@ jobs:
       - name: Injecting environment variables
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env
 
-      - name: Installing dependencies
-        run: npm run install
-
       - name: Building project
         run: npm run build
 
