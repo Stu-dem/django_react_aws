@@ -1,6 +1,6 @@
 name: Build and deploy frontend
 env: 
-  AWS_BACKEND_STORAGE_BUCKET_NAME: "django-react-frontend"
+  AWS_BACKEND_STORAGE_BUCKET_NAME: "django-react-backend-static"
   AWS_STORAGE_BUCKET_NAME: "django-react-frontend"
   AWS_REGION_NAME: "us-east-2"
   DEPLOY_STATICFILES_NAME: "core_staticfiles"
