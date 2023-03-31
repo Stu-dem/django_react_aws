@@ -1,5 +1,6 @@
 name: Build and deploy frontend
 env: 
+  AWS_BACKEND_STORAGE_BUCKET_NAME: "django-react-frontend"
   AWS_STORAGE_BUCKET_NAME: "django-react-frontend"
   AWS_REGION_NAME: "us-east-2"
   DEPLOY_STATICFILES_NAME: "core_staticfiles"
@@ -28,7 +29,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION_NAME }}
 
       - name: Copying file to S3
-        run: aws s3 cp ./${{ env.DEPLOY_STATICFILES_NAME }}/ s3://${{ secrets.AWS_STORAGE_BUCKET_NAME }}/${{ env.DEPLOY_STATICFILES_NAME }} --recursive
+        run: aws s3 cp ./${{ env.DEPLOY_STATICFILES_NAME }}/ s3://${{ env.AWS_BACKEND_STORAGE_BUCKET_NAME }}/${{ env.DEPLOY_STATICFILES_NAME }} --recursive
 
       - name: Print nice message on success finish
         run: echo "CI part finished successfuly"
