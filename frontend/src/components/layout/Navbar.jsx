@@ -1,40 +1,65 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import useUserActions, { getUser } from "../../hooks/user-actions";
+import className from "classname";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
 
-function NavigationBar() {
+const genericPages = [
+  { id: 1, name: "Home", url: "/" },
+  { id: 2, name: "About", url: "/about" },
+  { id: 3, name: "Contact us", url: "/contact" },
+];
+
+function Navbar({ sidebarOpen, toggleSidebar }) {
+  const location = useLocation();
   const navigate = useNavigate();
-  const userActions = useUserActions();
-  const user = getUser();
+
+  // const token = useSelector((state) => state.users.currentUser.auth_token);
+  // const [logout, { isSuccess }] = useLogoutMutation();
+
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
   const handleLogoutClick = () => {
-    userActions.logout();
+    // const request = logout();
+    // toast.promise(request, {
+    //   loading: "Logging you out...",
+    //   success: "Logout success!",
+    //   error: "Something went wrong logging you out...",
+    // });
+    navigate("/");
   };
 
-  const loginLogoutButton = user ? (
-    <button
-      type="button"
-      onClick={handleLogoutClick}
-      className="btn btn-secondary"
-    >
-      Logout
-    </button>
-  ) : (
+  const loginLogoutButton = (
     <div className="btn-group">
       <button
         type="button"
-        onClick={() => navigate("/login/")}
+        onClick={() => navigate("/login")}
         className="btn btn-primary"
       >
         Login
       </button>
       <button
         type="button"
-        onClick={() => navigate("/registration/")}
+        onClick={() => navigate("/registration")}
         className="btn btn-primary"
       >
         Signup
       </button>
     </div>
+  );
+
+  const handleDropdownClick = (page) => {
+    setHamburgerOpen(false);
+    navigate(page.url);
+  };
+
+  const mdNavLinks = genericPages.map((page) => (
+    <li>
+      <button onClick={() => navigate(page.url)}>{page.name}</button>
+    </li>
+  ));
+
+  const mdNavOptions = (
+    <div className="hidden md:flex items-center space-x-1">{mdNavLinks}</div>
   );
 
   return (
@@ -57,15 +82,33 @@ function NavigationBar() {
               />
             </svg>
           </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            {mdNavLinks}
+          </ul>
         </div>
 
-        <button className="btn btn-ghost normal-case text-xl">
-          Django+React+daisyUI
-        </button>
+        <div className="btn-group">
+          <button className="btn btn-ghost normal-case text-xl">
+            Django+React+daisyUI
+          </button>
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={() => toggleSidebar()}
+          >
+            {sidebarOpen ? "Hide sidebar" : "Show sidebar"}
+          </button>
+        </div>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{mdNavOptions}</ul>
       </div>
       <div className="navbar-end">{loginLogoutButton}</div>
     </div>
   );
 }
 
-export default NavigationBar;
+export default Navbar;

@@ -3,9 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
-import "./App.css";
+// import "./App.css";
 import ProtectedRoute from "./routes/ProtectedRoutes";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -16,6 +18,8 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about/" element={<About />} />
+        <Route path="/contact/" element={<Contact />} />
         <Route path="/registration/" element={<Registration />} />
         <Route path="/login/" element={<Login />} />
         <Route

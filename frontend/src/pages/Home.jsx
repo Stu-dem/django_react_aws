@@ -1,11 +1,11 @@
 import React from "react";
+import Paper from "../components/layout/Paper";
 
 function Home() {
   return (
-    <div className="">
-      <h1>Home</h1>
-      <p className="">Welcome to this simple website!</p>
-    </div>
+    <Paper title="Home">
+      <div>Welcome to our website</div>
+    </Paper>
   );
 }
 
