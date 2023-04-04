@@ -1,5 +1,5 @@
 import React from "react";
-import Paper from "../components/layout/Paper";
+import Paper from "../../components/layout/Paper";
 
 function Sermons() {
   return (

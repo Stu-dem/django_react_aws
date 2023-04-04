@@ -3,8 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Welcome from "./home/Welcome";
 import Events from "./home/Events";
-import Youth from "./home/Youth";
-import Bible from "./home/Bible";
+import Contact from "./contact/Contact";
 
 function Home() {
   const scrollToEvents = useRef();
@@ -13,23 +12,13 @@ function Home() {
 
   return (
     <>
-      <div className="pb-3">
-        <Welcome
-          scrollEvents={scrollToEvents}
-          scrollYouth={scrollToYouth}
-          scrollBible={scrollToBible}
-        />
-      </div>
-
-      <div class="grid justify-items-center space-y-3">
-        <div ref={scrollToEvents}>
+      <Welcome />
+      <div class="flex flex-col items-center space-y-4 mt-3">
+        <div className="flex space-y-3 flex-col lg:flex-row lg:items-start lg:space-x-3 lg:space-y-0 p-3">
           <Events />
         </div>
-        <div ref={scrollToYouth}>
-          <Youth />
-        </div>
-        <div ref={scrollToBible}>
-          <Bible />
+        <div className="flex space-y-3 flex-col lg:flex-row lg:items-start lg:space-x-3 lg:space-y-0 p-3">
+          <Contact />
         </div>
       </div>
     </>

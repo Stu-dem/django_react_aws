@@ -1,79 +1,65 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Hero from "../../components/layout/Hero";
 
-function Welcome({ scrollEvents, scrollYouth, scrollBible }) {
+function Welcome() {
   const navigate = useNavigate();
+
+  const buttonList = [
+    {
+      id: 1,
+      title: "Sermons",
+      link: "/sermons/",
+    },
+    {
+      id: 2,
+      title: "Church life",
+      link: "/church-life/",
+    },
+    {
+      id: 3,
+      title: "Giving",
+      link: "/giving/",
+    },
+    {
+      id: 4,
+      title: "Events",
+      link: "/events/",
+    },
+  ];
+
+  const buttonContent = buttonList.map((button) => {
+    return (
+      <button
+        className="btn btn-primary w-24 md:w-38"
+        onClick={() => navigate(button.link)}
+      >
+        {button.title}
+      </button>
+    );
+  });
+
+  const content = (
+    <>
+      <p class="max-w-2xl mb-2 font-light text-gray-500 lg:mb-3 md:text-lg lg:text-xl">
+        To know Christ and the power of his resurrection.
+      </p>
+      <p class="max-w-2xl mb-2 font-light text-gray-500 lg:mb-3 md:text-lg lg:text-xl">
+        Use the buttons below to find where you need to go
+      </p>
+      <div className="">
+        <div className="btn-group pt-6">{buttonContent}</div>
+      </div>
+    </>
+  );
 
   return (
     <>
-      <div className="card lg:card-side bg-base-100 shadow-xl">
-        <div className="card-body m-auto align-middle justify-items-center">
-          <div class="grid justify-items-center ...">
-            <h2 className="card-title">
-              Welcome to Underberg Congregational Church
-            </h2>
-            <p className="mt-5">
-              Use the buttons below to find where you need to go
-            </p>
-            <div className="btn-group pt-3">
-              <button
-                className="btn btn-primary w-36"
-                onClick={() =>
-                  scrollEvents.current.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-              >
-                Upcoming events
-              </button>
-              <button
-                className="btn btn-primary w-36"
-                onClick={() =>
-                  scrollYouth.current.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                Kids & Youth
-              </button>
-              <button
-                className="btn btn-primary w-36"
-                onClick={() =>
-                  scrollBible.current.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-              >
-                Bible studies
-              </button>
-            </div>
-            <div className="btn-group">
-              <button
-                className="btn btn-primary w-36"
-                onClick={() => navigate("/sermons/")}
-              >
-                Sermons
-              </button>
-              <button
-                className="btn btn-primary w-36"
-                onClick={() => navigate("/ministries/")}
-              >
-                Ministries
-              </button>
-              <button
-                className="btn btn-primary w-36"
-                onClick={() => navigate("/people/")}
-              >
-                People
-              </button>
-            </div>
-          </div>
-        </div>
-        <figure>
-          <img
-            src="https://images.unsplash.com/photo-1467070607100-22fd5b4f38ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-            alt="Album"
-          />
-        </figure>
-      </div>
+      <Hero
+        title="Welcome to Underberg Congregational Church"
+        content={content}
+        image_url="https://images.unsplash.com/photo-1517837016564-bfc3ffd67455?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80"
+      />
     </>
   );
 }

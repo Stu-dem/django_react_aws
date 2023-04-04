@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 const genericPages = [
   { id: 1, name: "Home", url: "/" },
   { id: 2, name: "About", url: "/about" },
-  { id: 3, name: "Contact us", url: "/contact" },
 ];
 
 function Navbar() {
