@@ -18,6 +18,11 @@ function Sermons() {
             and choose a sermon to listen to from our archive and then use the
             audio player to manage your playback.
           </p>
+
+          <p class="text-gray-700 text-xl font-semibold text-center w-11/12 pt-4">
+            Please note that these are not our actual sermons - only dummy
+            content to prove the concept...
+          </p>
           <div className="m-4"></div>
           <AudioPlayer {...{ currentSermon }} />
         </div>
