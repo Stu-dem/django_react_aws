@@ -76,8 +76,9 @@ function Events() {
                   Upcoming events
                 </h1>
                 <p class="text-gray-700 text-lg font-light">
-                  With over 100 years of combined experience, we've got a
-                  well-seasoned team at the helm.
+                  We're so glad that you are here. If you'd like to join us to
+                  see what we are about we'll be hosting the following events
+                  soon
                 </p>
               </div>
             </div>

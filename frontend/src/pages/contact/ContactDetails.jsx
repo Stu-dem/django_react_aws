@@ -59,7 +59,7 @@ function ContactDetails() {
     <>
       <div className="card w-96 bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="card-title">Contact us</h2>
+          <h2 className="card-title">Church management</h2>
           <div class="flow-root">
             <ul role="list" class="divide-y divide-gray-200">
               {contactList}

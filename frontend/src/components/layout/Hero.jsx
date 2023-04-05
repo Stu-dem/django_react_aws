@@ -2,7 +2,7 @@ import React from "react";
 
 function Hero({ title, content, image_url, ref }) {
   const backgroundClass =
-    "bg-center bg-no-repeat bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat lg:bg-[url('" +
+    "bg-white lg:bg-cover lg:bg-center lg:bg-no-repeat lg:bg-[url('" +
     image_url +
     "')]";
   return (

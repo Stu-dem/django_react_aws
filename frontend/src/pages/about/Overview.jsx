@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../../components/layout/Hero";
 
-function Welcome({ scrollBeliefs, scrollHistory }) {
+function Overview() {
   const content = (
     <>
       <div className="lg:h-48">
@@ -24,4 +24,4 @@ function Welcome({ scrollBeliefs, scrollHistory }) {
   );
 }
 
-export default Welcome;
+export default Overview;
