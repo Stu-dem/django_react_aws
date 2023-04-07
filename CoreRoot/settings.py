@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     # local apps
     'core',
     'core.user',
-    'core.auth'
+    'core.auth',
+    'core.events'
 ]
 
 MIDDLEWARE = [
