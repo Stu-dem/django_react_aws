@@ -8,8 +8,10 @@ function SermonsList({ sermonList, setCurrentSermon }) {
   });
 
   return (
-    <div class="container max-w-7xl p-3 rounded-xl bg-base-200">
-      <div class="flex flex-wrap">{sermons}</div>
+    <div class="container p-3 rounded-xl bg-base-200">
+      <div class="grid grid-cols-1 space-y-3 md:grid-cols-2 md:space-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 lg:space-x-3">
+        {sermons}
+      </div>
     </div>
   );
 }

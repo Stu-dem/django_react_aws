@@ -1,9 +1,14 @@
 function Paper({ title, children }) {
   return (
-    <div className="card bg-base-100 min-h-full text-primary-content">
-      <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        {children}
+    <div class="flex items-center justify-center shadow-xl p-8 rounded-xl bg-base-200">
+      <div class="flex flex-col">
+        <div class="flex flex-col">
+          <div class="container px-4">
+            <div class="flex flex-wrap justify-center text-center mb-4">
+              {children}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

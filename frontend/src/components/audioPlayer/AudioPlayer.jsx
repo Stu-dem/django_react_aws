@@ -20,7 +20,7 @@ function AudioPlayer({ currentSermon }) {
   };
 
   return (
-    <div className="card w-6/12 bg-base-100 shadow-xl">
+    <div className="card sm:w-9/12 md:w-6/12 bg-base-100 shadow-xl">
       <audio
         src={currentSermon.src}
         ref={audioRef}
